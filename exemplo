@@ -1,0 +1,26 @@
+<!--O iframe vai ser incorporado em sua aplicação, mas o mesmo vai se redimensionar a qualquer tela. Indicado para sites responsivos ou web app. -->
+<ion-content overflow-scroll="false" style="min-height : 100%">
+ <iframe src="http://tordo.com.br" id="FrameID" class="bottle" style="border-style: none;width: 100%; height: auto;"></iframe>
+</ion-content>
+<script>
+<!--Script responsavel por redimensionar o iframe em qualquer dispositivo-->
+function sizeOfThings(){
+  var windowWidth = window.innerWidth;
+  var windowHeight = window.innerHeight;    
+  var screenWidth = screen.width;
+  var screenHeight = screen.height;   
+  document.querySelector(".bottle").style.height =  windowHeight + 'px';
+};
+sizeOfThings();
+window.addEventListener('resize', function(){
+  sizeOfThings();
+});
+//bloqueia botão fisico back
+document.addEventListener('deviceready', onDeviceReady, false);
+function onDeviceReady() {
+document.addEventListener('backbutton', onBackKeyDown, false);
+}
+function onBackKeyDown() {
+  e.preventDefault();
+}
+</script>
